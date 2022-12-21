@@ -9,7 +9,7 @@ import Home from './pages/Home';
 import Navigation from './components/Navigation';
 import Products from './pages/Products';
 import Carts from './pages/Carts';
-
+import SingleProduct from './pages/SingleProduct';
 
 const App = () =>{
     return (
@@ -20,7 +20,8 @@ const App = () =>{
                 <Routes>
                     <Route path="/" element={<Home/>} exact></Route>
                     {/* <Route path="/about" element={<About/>}></Route> */}
-                    <Route path="/products" element={<Products/>}></Route>
+                    <Route path="/products" exact element={<Products/>}></Route>
+                    <Route path="/products/:_id" exact element={<SingleProduct/>}></Route>
                     <Route path="/carts" element={<Carts/>}></Route>
 
                     
