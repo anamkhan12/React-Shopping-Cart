@@ -10,11 +10,35 @@ import Navigation from './components/Navigation';
 import Products from './pages/Products';
 import Carts from './pages/Carts';
 import SingleProduct from './pages/SingleProduct';
+import {CartContext} from './CartContext';
+import { useEffect ,useState } from 'react';
+// import { getCart, storeCart } from './helpers';
 
 const App = () =>{
+    const [cart ,setCart] = useState({});
+    //fetch cart from local storage 
+    useEffect(() =>{
+       const cart = window.localStorage.getItem('cart');
+       setCart(JSON.parse(cart));
+    },[]);
+
+    useEffect(() =>{
+        window.localStorage.setItem('cart',JSON.stringify(cart));
+    },[cart]);
+    // Fetch cart from local storage
+    // useEffect(() => {
+    //     getCart().then(cart => {
+    //     setCart(JSON.parse(cart));
+    //     });
+    // }, []);
+    
+    // useEffect(() => {
+    //     storeCart(JSON.stringify(cart));
+    // }, [cart]);
     return (
         <>
             <Router>
+                <CartContext.Provider value={{ cart, setCart }}>
                 <Navigation />
             
                 <Routes>
@@ -26,7 +50,7 @@ const App = () =>{
 
                     
                 </Routes>
-
+                </CartContext.Provider>
             </Router>
             
         </>

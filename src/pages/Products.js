@@ -1,6 +1,12 @@
+import  AllProducts from '../components/AllProducts';
+
+
 const Products = () => {
   return (
-      <h1>effrrf</h1>
+      <div>
+         <AllProducts/>
+
+      </div>
   )
 }
 
